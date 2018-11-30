@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>第四次作业</title>
+    <style>
+        body{ margin:0;}
+        #div{
+            width:100px;
+            height:100px;
+            background:chartreuse;
+            position:absolute;
+            left:50px;
+            bottom:0;
+        }
+    </style>
+    <script>
+        window.onload=function (){
+            var oUp=document.getElementById('up');
+            var oDown=document.getElementById('down');
+            var oLeft=document.getElementById('left');
+            var oRight=document.getElementById('right');
+
+            var oDiv=document.getElementById('div');
+
+            var timer=null;
+
+            oUp.onmousedown=function (){
+                Move('top');
+            }
+            oDown.onmousedown=function (){
+                Move('bottom');
+            }
+            oLeft.onmousedown=function (){
+                Move('left');
+            }
+            oRight.onmousedown=function (){
+                Move('right');
+            }
+
+            var i =2;
+
+
+            function Move (f){
+                clearInterval(timer);
+
+                timer=setInterval(function (){
+
+                    switch (f){
+                        case 'left':
+                            oDiv.style.left=oDiv.offsetLeft-i+'px';
+                            break;
+                        case 'right':
+                            oDiv.style.left=oDiv.offsetLeft+i+'px';
+                            break;
+                        case 'top':
+                            oDiv.style.top=oDiv.offsetTop-i+'px';
+                            break;
+                        case 'bottom':
+                            oDiv.style.top=oDiv.offsetTop+i+'px';
+                    }
+
+                },25)
+            }
+
+            oUp.onmouseup=oDown.onmouseup=oLeft.onmouseup=oRight.onmouseup=function (){
+                MouseUp ();
+            }
+
+            function MouseUp (){
+                clearInterval(timer);
+            }
+        }
+    </script>
+</head>
+
+<body>
+<input type="button" value="向上" id="up">
+<input type="button" value="向下" id="down">
+<input type="button" value="向左" id="left">
+<input type="button" value="向右" id="right">
+
+<div id="div"></div>
+</body>
+</html>
