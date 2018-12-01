@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第四次作业</title>
+    <style>
+        body{margin: 0;}
+        #div{
+            margin: 150px;
+            height: 150px;
+            background: chartreuse;
+            position: absolute;
+            left: 50px;
+            bottom: 50px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oup = document.getElementById("up");
+            var odown = document.getElementById("down");
+            var oleft = document.getElementById("left");
+            var oright = document.getElementById("right");
+            var odiv = document.getElementById("div");
+
+
+            oup.onmousedown = function () {
+                move("top");
+            }
+            odown.onmousedown = function () {
+                move("bottom");
+            }
+            oleft.onmousedown = function () {
+                move("left");
+            }
+            oright.onmousedown = function () {
+                move("right");
+            }
+
+            var timer = null;
+                
+            }
+            function move (f) {
+               clearInterval(timer);
+               timer = setInterval(function () {
+
+                   switch (f) {
+                       case "left":
+                           odiv.style.left = odiv.offsetLeft - 2 + "px";
+                           break;
+                       case "right":
+                           odiv.style.left = odiv.offsetLeft + 2 + "px";
+                           break;
+                       case "top":
+                           odiv.style.top = odiv.offsetTop - 2 + "px";
+                           break;
+                       case "bottom" :
+                           odiv.style.top = odiv.offsetTop - 2 + "px";
+                           break
+
+                   }
+               },10)
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="向上" id="up">
+<input type="button" value="向下" id="down">
+<input type="button" value="向左" id="left">
+<input type="button" value="向右" id="right">
+
+<div id="div"></div>
+</body>
+</html>
